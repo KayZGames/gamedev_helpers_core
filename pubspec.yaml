@@ -1,0 +1,16 @@
+name: gamedev_helpers_core
+description: A starting point for Dart libraries or applications.
+publish_to: none
+
+environment:
+  sdk: '>=2.11.0 <3.0.0'
+
+dependencies:
+  dartemis: ^0.8.0
+  vector_math: ^2.1.0-nullsafety
+
+dev_dependencies:
+  build_runner: ^1.10.6
+  dartemis_builder: ^0.1.0+2
+  pedantic: ^1.10.0-nullsafety
+  test: ^1.16.0-nullsafety
