@@ -7,8 +7,8 @@ part of 'simple_gravity_system.dart';
 // **************************************************************************
 
 abstract class _$SimpleGravitySystem extends EntityProcessingSystem {
-  Mapper<Acceleration> accelerationMapper;
-  Mapper<Mass> massMapper;
+  late final Mapper<Acceleration> accelerationMapper;
+  late final Mapper<Mass> massMapper;
   _$SimpleGravitySystem() : super(Aspect.empty()..allOf([Acceleration, Mass]));
   @override
   void initialize() {

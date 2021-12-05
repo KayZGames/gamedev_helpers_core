@@ -7,7 +7,7 @@ part of 'simple_acceleration_system.dart';
 // **************************************************************************
 
 abstract class _$ResetAccelerationSystem extends EntityProcessingSystem {
-  Mapper<Acceleration> accelerationMapper;
+  late final Mapper<Acceleration> accelerationMapper;
   _$ResetAccelerationSystem() : super(Aspect.empty()..allOf([Acceleration]));
   @override
   void initialize() {
@@ -17,8 +17,8 @@ abstract class _$ResetAccelerationSystem extends EntityProcessingSystem {
 }
 
 abstract class _$SimpleAccelerationSystem extends EntityProcessingSystem {
-  Mapper<Acceleration> accelerationMapper;
-  Mapper<Velocity> velocityMapper;
+  late final Mapper<Acceleration> accelerationMapper;
+  late final Mapper<Velocity> velocityMapper;
   _$SimpleAccelerationSystem()
       : super(Aspect.empty()..allOf([Acceleration, Velocity]));
   @override

@@ -2,7 +2,9 @@ import 'dart:math';
 
 /// Converts [h][s][l] to rgb. All values between 0.0 and 1.0.
 List<double> hslToRgb(double h, double s, double l) {
-  double r, g, b;
+  double r;
+  double g;
+  double b;
   if (s == 0.0) {
     r = g = b = l;
   } else {
@@ -36,9 +38,11 @@ double _hue2rgb(double p, double q, double t) {
 
 /// Converts rgb to hsl. All values between 0.0 and 1.0.
 List<double> rgbToHsl(double red, double green, double blue) {
-  final maxv = max(max(red, green), blue), minv = min(min(red, green), blue);
+  final maxv = max(max(red, green), blue);
+  final minv = min(min(red, green), blue);
   final l = (maxv + minv) / 2.0;
-  double h, s;
+  var h = 0.0;
+  var s = 0.0;
 
   if (maxv == minv) {
     h = s = 0.0; // achromatic
@@ -56,3 +60,5 @@ List<double> rgbToHsl(double red, double green, double blue) {
   }
   return [h, s, l];
 }
+
+final random = Random();

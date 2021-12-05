@@ -7,9 +7,9 @@ part of 'view_projection_matrix_manager.dart';
 // **************************************************************************
 
 abstract class _$ViewProjectionMatrixManager extends Manager {
-  Mapper<Position> positionMapper;
-  Mapper<Camera> cameraMapper;
-  CameraManager cameraManager;
+  late final Mapper<Position> positionMapper;
+  late final Mapper<Camera> cameraMapper;
+  late final CameraManager cameraManager;
   @override
   void initialize() {
     super.initialize();

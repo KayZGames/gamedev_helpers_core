@@ -8,19 +8,22 @@ class Sound extends Component {
 }
 
 class Acceleration extends Component {
-  double x, y;
+  double x;
+  double y;
 
   Acceleration(this.x, this.y);
 }
 
 class Velocity extends Component {
-  double x, y;
+  double x;
+  double y;
 
   Velocity(this.x, this.y);
 }
 
 class Position extends Component {
-  double x, y;
+  double x;
+  double y;
 
   Position(this.x, this.y);
 }
@@ -36,7 +39,15 @@ class Orientation extends Component {
 class Particle extends Component {}
 
 class Color extends Component {
-  double r, g, b, a, l, realAlpha, realR, realG, realB;
+  double r;
+  double g;
+  double b;
+  double a;
+  double l;
+  double realAlpha;
+  double realR;
+  double realG;
+  double realB;
 
   Color(this.r, this.g, this.b, this.a)
       : realAlpha = a,
@@ -45,15 +56,12 @@ class Color extends Component {
         realB = b,
         l = rgbToHsl(r, g, b)[2];
 
-  Color.fromHsl(double h, double s, this.l, this.a) {
+  factory Color.fromHsl(double h, double s, double l, double a) {
     final rgb = hslToRgb(h, s, l);
-    r = rgb[0];
-    g = rgb[1];
-    b = rgb[2];
-    realR = r;
-    realG = g;
-    realB = b;
-    realAlpha = a;
+    final r = rgb[0];
+    final g = rgb[1];
+    final b = rgb[2];
+    return Color(r, g, b, a);
   }
 
   void setLightness(double lightness) {

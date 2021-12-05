@@ -7,8 +7,8 @@ part of 'simple_movement_system.dart';
 // **************************************************************************
 
 abstract class _$SimpleMovementSystem extends EntityProcessingSystem {
-  Mapper<Velocity> velocityMapper;
-  Mapper<Position> positionMapper;
+  late final Mapper<Velocity> velocityMapper;
+  late final Mapper<Position> positionMapper;
   _$SimpleMovementSystem() : super(Aspect.empty()..allOf([Velocity, Position]));
   @override
   void initialize() {
