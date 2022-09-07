@@ -1,10 +1,13 @@
+import 'dart:math';
+
 import 'package:dartemis/dartemis.dart';
 
 import '../helpers.dart';
 
 class Sound extends Component {
-  String clipName;
-  Sound(this.clipName);
+  String source;
+  String clip;
+  Sound(this.source, this.clip);
 }
 
 class Acceleration extends Component {
@@ -19,6 +22,9 @@ class Velocity extends Component {
   double y;
 
   Velocity(this.x, this.y);
+
+  double get absolute => sqrt(x * x + y * y);
+  double get angle => atan2(y, x);
 }
 
 class Position extends Component {
@@ -28,7 +34,11 @@ class Position extends Component {
   Position(this.x, this.y);
 }
 
-class Mass extends Component {}
+class Mass extends Component {
+  double value;
+
+  Mass(this.value);
+}
 
 class Orientation extends Component {
   double angle;
@@ -48,13 +58,15 @@ class Color extends Component {
   double realR;
   double realG;
   double realB;
+  String hexValue;
 
   Color(this.r, this.g, this.b, this.a)
       : realAlpha = a,
         realR = r,
         realG = g,
         realB = b,
-        l = rgbToHsl(r, g, b)[2];
+        l = rgbToHsl(r, g, b)[2],
+        hexValue = '#${_toHex(r)}${_toHex(g)}${_toHex(b)}';
 
   factory Color.fromHsl(double h, double s, double l, double a) {
     final rgb = hslToRgb(h, s, l);
@@ -72,6 +84,9 @@ class Color extends Component {
     g = rgb[1];
     b = rgb[2];
   }
+
+  static String _toHex(double value) =>
+      (value * 255.99).round().toRadixString(16).padLeft(2, '0');
 }
 
 class Camera extends Component {
