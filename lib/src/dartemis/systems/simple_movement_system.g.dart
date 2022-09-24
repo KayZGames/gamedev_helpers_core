@@ -6,14 +6,25 @@ part of 'simple_movement_system.dart';
 // SystemGenerator
 // **************************************************************************
 
-abstract class _$SimpleMovementSystem extends EntityProcessingSystem {
-  late final Mapper<Velocity> velocityMapper;
+abstract class _$SimpleMovementSystem extends EntitySystem {
   late final Mapper<Position> positionMapper;
-  _$SimpleMovementSystem() : super(Aspect.empty()..allOf([Velocity, Position]));
+  late final Mapper<Velocity> velocityMapper;
+  _$SimpleMovementSystem() : super(Aspect.empty()..allOf([Position, Velocity]));
   @override
   void initialize() {
     super.initialize();
-    velocityMapper = Mapper<Velocity>(world);
     positionMapper = Mapper<Position>(world);
+    velocityMapper = Mapper<Velocity>(world);
   }
+
+  @override
+  void processEntities(Iterable<int> entities) {
+    final positionMapper = this.positionMapper;
+    final velocityMapper = this.velocityMapper;
+    for (final entity in entities) {
+      processEntity(entity, positionMapper[entity], velocityMapper[entity]);
+    }
+  }
+
+  void processEntity(int entity, Position position, Velocity velocity);
 }

@@ -1,10 +1,10 @@
 name: gamedev_helpers_core
 description: Core for gamedev_helpers that can be used serverside.
-version: 1.1.0
+version: 2.0.0
 publish_to: none
 
 environment:
-  sdk: '>=2.15.0 <3.0.0'
+  sdk: '>=2.17.0 <3.0.0'
 
 dependencies:
   dartemis: ^0.9.0
@@ -12,4 +12,4 @@ dependencies:
 
 dev_dependencies:
   build_runner: ^2.1.5
-  dartemis_builder: ^0.2.0
+  dartemis_builder: ^0.3.0
